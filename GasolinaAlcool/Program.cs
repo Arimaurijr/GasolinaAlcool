@@ -6,22 +6,43 @@ internal class Program
     {
         double gasolina = 0.0, alcool = 0.0;
         double rentabilidade = 0.0;
+        string combustivel;
 
-        Console.WriteLine("Digite o preço da gasolina:");
-        gasolina = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-        Console.WriteLine("Digite o preço do alcool:");
-        alcool = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-        rentabilidade = alcool / gasolina;
-
-        if (rentabilidade > 0.72)
+        void Entrada()
         {
-            Console.WriteLine("Deve abastecer com GASOLINA !");
+            Console.WriteLine("Digite o preço da gasolina:");
+            gasolina = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Digite o preço do alcool:");
+            alcool = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
         }
-        else
+
+        void CalculoRentabilidade()
         {
-            Console.WriteLine("Deve abastecer com ALCOOL !");
+            rentabilidade = alcool / gasolina;
         }
+
+        void Verificacao()
+        {
+            if (rentabilidade > 0.72)
+            {
+                combustivel = "gasolina";
+                Saida();
+            }
+            else
+            {
+                combustivel = "alcool";
+                Saida();
+            }
+        }
+
+        void Saida()
+        {
+            Console.WriteLine("Deve abastecer com " + combustivel);
+        }
+
+        Entrada();
+        CalculoRentabilidade();
+        Verificacao();
     }
 }
